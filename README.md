@@ -18,8 +18,6 @@ npm install -g electron
 git clone https://github.com/atnos/pia-app
 # Go into the repository
 cd pia-app
-# Use package_dev.json for development
-cp package_dev.json package.json
 # Install dependencies (You can use YARN instead of npm install)
 npm install
 # Run the app
@@ -31,10 +29,6 @@ npm start
 Install electron-packager:
 
 `npm install -g electron-packager`
-
-Use package_distribution.json instead of package.json:
-
-`cp package_distribution.json package.json`
 
 Build with the command:
 
