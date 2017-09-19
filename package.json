@@ -1,0 +1,18 @@
+{
+  "name": "PIA",
+  "version": "0.0.4",
+  "description": "PIA application",
+  "main": "main.js",
+  "scripts": {
+    "start": "./node_modules/.bin/electron .",
+    "package-mac":   "electron-packager . --electron-version='1.6.11' --overwrite --prune=true --asar=true --platform=darwin --arch=x64 --icon=icons/mac/icon.icns --out=release-builds",
+    "package-win":   "electron-packager . --electron-version='1.6.11' --overwrite --prune=true --asar=true --platform=win32 --arch=x64 --icon=icons/win/icon.ico --out=release-builds",
+    "package-linux": "electron-packager . --electron-version='1.6.11' --overwrite --prune=true --asar=true --platform=linux --arch=x64 --out=release-builds"
+  },
+  "repository": "https://github.com/atnos/pia-app",
+  "keywords": [
+    "Electron",
+    "PIA"
+  ],
+  "author": "ATNOS"
+}

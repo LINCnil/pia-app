@@ -15,10 +15,10 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    alwaysOnTop: true,
+    alwaysOnTop: false,
     fullscreen: false,
     kiosk: false,
-    icon: path.join(__dirname, 'icons/png/64x64.png'),
+    icon: path.join(__dirname, 'icons/default/icon.png'),
     webPreferences: {
       nodeIntegration: false, plugins: true
     }
@@ -42,19 +42,10 @@ function createWindow () {
     mainWindow = null
   })
 
-  // forbid any attempt to download a file
-  const {session} = require('electron')
-  session.defaultSession.on('will-download', (event, item, webContents) => {
-    event.preventDefault();
-  })
-
-  const sc_reload = globalShortcut.register('CommandOrControl+R', () => {
-    mainWindow.reload()
-  })
-
-  const sc_quit = globalShortcut.register('CommandOrControl+Alt+Shift+D', () => {
-    mainWindow.close()
-  })
+  mainWindow.webContents.on('new-window', function(e, url) {
+    e.preventDefault();
+    require('electron').shell.openExternal(url);
+  });
 }
 
 // This method will be called when Electron has finished
