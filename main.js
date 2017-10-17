@@ -26,8 +26,8 @@ function createWindow () {
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
-    pathname: 'pia-front.atnosapp.com',
-    protocol: 'http:',
+    pathname: path.join(__dirname, 'dist', 'index.html'),
+    protocol: 'file:',
     slashes: true
   }))
 
