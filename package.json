@@ -1,6 +1,6 @@
 {
   "name": "PIA",
-  "version": "0.0.4",
+  "version": "1.0.4",
   "description": "PIA application",
   "main": "main.js",
   "scripts": {
