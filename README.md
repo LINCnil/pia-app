@@ -4,14 +4,14 @@
 
 To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer.
 
-__First you need to build the angular application and copy the `dist` directory to the root of the PIA Electron Application.__
+__First you need to [build the angular application](https://github.com/LINCnil/pia#build) and copy the `dist` directory to the root of the PIA Electron Application.__
 
 From your command line:
 
 ```bash
 npm install -g electron
 # Clone this repository
-git clone https://github.com/atnos/pia-app
+git clone https://github.com/LINCnil/pia-app
 # Go into the repository
 cd pia-app
 # Install dependencies (You can use YARN instead of npm install)
@@ -28,14 +28,11 @@ Install electron-packager:
 
 Build with the command:
 
-For MacOs users
-`npm run package-mac`
+For MacOs users: `npm run package-mac`
 
-For GNU/Linux users
-`npm run package-linux`
+For GNU/Linux users: `npm run package-linux`
 
-For Windows users
-`npm run package-win`
+For Windows users: `npm run package-win` (or for 32bits `npm run package-win32`)
 
 Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
 

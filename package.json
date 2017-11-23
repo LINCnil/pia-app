@@ -1,15 +1,16 @@
 {
   "name": "PIA",
-  "version": "0.0.4",
-  "description": "PIA application",
+  "version": "0.0.5",
+  "description": "Version Portable Outil PIA",
   "main": "main.js",
   "scripts": {
     "start": "./node_modules/.bin/electron .",
-    "package-mac":   "electron-packager . --electron-version='1.7.8' --overwrite --prune=true --asar=true --platform=darwin --arch=x64 --icon=icons/mac/icon.icns --out=release-builds",
-    "package-win":   "electron-packager . --electron-version='1.7.8' --overwrite --prune=true --asar=true --platform=win32 --arch=x64 --icon=icons/win/icon.ico --out=release-builds",
-    "package-linux": "electron-packager . --electron-version='1.7.8' --overwrite --prune=true --asar=true --platform=linux --arch=x64 --out=release-builds"
+    "package-mac":   "electron-packager . --electron-version=1.7.9 --overwrite --prune=true --asar=true --platform=darwin --arch=x64 --icon=icons/mac/icon.icns --out=release-builds",
+    "package-win32": "electron-packager . --electron-version=1.7.9 --overwrite --prune=true --asar=true --platform=win32 --arch=ia32 --icon=icons/win/icon.ico --out=release-builds",
+    "package-win":   "electron-packager . --electron-version=1.7.9 --overwrite --prune=true --asar=true --platform=win32 --arch=x64 --icon=icons/win/icon.ico --out=release-builds",
+    "package-linux": "electron-packager . --electron-version=1.7.9 --overwrite --prune=true --asar=true --platform=linux --arch=x64 --out=release-builds"
   },
-  "repository": "https://github.com/atnos/pia-app",
+  "repository": "https://github.com/LINCnil/pia-app",
   "keywords": [
     "Electron",
     "PIA"
