@@ -1,9 +1,9 @@
 const electron = require('electron')
 // Module to control application life.
-const app = electron.app
-const globalShortcut = electron.globalShortcut
-// Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow
+const { app, BrowserWindow } = electron
+const updater = require('./updater')
+// Keep window state
+const windowStateKeeper = require('electron-window-state')
 
 const path = require('path')
 const url = require('url')
@@ -12,17 +12,104 @@ const url = require('url')
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-function createWindow () {
+const template = [
+  {
+    label: 'Edit',
+    submenu: [
+      {role: 'undo'},
+      {role: 'redo'},
+      {type: 'separator'},
+      {role: 'cut'},
+      {role: 'copy'},
+      {role: 'paste'},
+      {role: 'pasteandmatchstyle'},
+      {role: 'delete'},
+      {role: 'selectall'}
+    ]
+  },
+  {
+    label: 'View',
+    submenu: [
+      {role: 'resetzoom'},
+      {role: 'zoomin'},
+      {role: 'zoomout'},
+      {type: 'separator'},
+      {role: 'togglefullscreen'}
+    ]
+  },
+  {
+    role: 'window',
+    submenu: [
+      {role: 'minimize'},
+      {role: 'close'}
+    ]
+  }
+]
+
+if (process.platform === 'darwin') {
+  template.unshift({
+    label: 'PIA',
+    submenu: [
+      {role: 'hide'},
+      {role: 'hideothers'},
+      {role: 'unhide'},
+      {type: 'separator'},
+      {role: 'quit'}
+    ]
+  })
+
+  // Edit menu
+  template[1].submenu.push(
+    {type: 'separator'},
+    {
+      label: 'Speech',
+      submenu: [
+        {role: 'startspeaking'},
+        {role: 'stopspeaking'}
+      ]
+    }
+  )
+
+  // Window menu
+  template[3].submenu = [
+    {role: 'close'},
+    {role: 'minimize'},
+    {role: 'zoom'},
+    {type: 'separator'},
+    {role: 'front'}
+  ]
+}
+
+const menu = electron.Menu.buildFromTemplate(template)
+
+
+
+function createWindow() {
+  let winState = windowStateKeeper({
+    defaultWidth: 900,
+    defaultHeight: 600
+  })
+
+  electron.Menu.setApplicationMenu(menu)
+
   // Create the browser window.
   mainWindow = new BrowserWindow({
+    width: winState.width,
+    height: winState.height,
+    x: winState.x,
+    y: winState.y,
+    minWidth: 900,
+    minHeight: 600,
     alwaysOnTop: false,
     fullscreen: false,
     kiosk: false,
-    icon: path.join(__dirname, 'icons/default/icon.png'),
+    icon: `$(__dirname)/icons/64x64.png`,
     webPreferences: {
       nodeIntegration: false, plugins: true
     }
   })
+
+  winState.manage(mainWindow)
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -46,6 +133,8 @@ function createWindow () {
     e.preventDefault();
     require('electron').shell.openExternal(url);
   });
+
+  setTimeout(updater.check, 2000);
 }
 
 // This method will be called when Electron has finished
