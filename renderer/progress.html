@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Downloading PIA Update</title>
+  </head>
+  <body>
+    <progress style="width:100%;" value="0" max="100"></progress>
+    <script>
+      const {ipcRenderer} = require('electron')
+      setInterval(() => {
+        let progress = ipcRenderer.sendSync('download-progress-request')
+        document.querySelector('progress').value = progress
+      }, 1000)
+    </script>
+  </body>
+</html>
