@@ -1,19 +1,49 @@
 {
   "name": "PIA",
-  "version": "0.0.5",
+  "version": "1.5.0",
   "description": "Version Portable Outil PIA",
   "main": "main.js",
   "scripts": {
-    "start": "./node_modules/.bin/electron .",
-    "package-mac":   "electron-packager . --electron-version=1.7.9 --overwrite --prune=true --asar=true --platform=darwin --arch=x64 --icon=icons/mac/icon.icns --out=release-builds",
-    "package-win32": "electron-packager . --electron-version=1.7.9 --overwrite --prune=true --asar=true --platform=win32 --arch=ia32 --icon=icons/win/icon.ico --out=release-builds",
-    "package-win":   "electron-packager . --electron-version=1.7.9 --overwrite --prune=true --asar=true --platform=win32 --arch=x64 --icon=icons/win/icon.ico --out=release-builds",
-    "package-linux": "electron-packager . --electron-version=1.7.9 --overwrite --prune=true --asar=true --platform=linux --arch=x64 --out=release-builds"
+    "start": "electron .",
+    "mac": "electron-builder -m",
+    "win": "electron-builder -w",
+    "linux": "electron-builder -l",
+    "win-cert": "electron-builder create-self-signed-cert -p atnos",
+    "publish-to-github": "electron-builder build -m -p onTagOrDraft"
   },
+  "author": "ATNOS",
   "repository": "https://github.com/LINCnil/pia-app",
   "keywords": [
     "Electron",
     "PIA"
   ],
-  "author": "ATNOS"
+  "build": {
+    "appId": "com.atnos.pia",
+    "directories": {
+      "buildResources": ".",
+      "output": "releases"
+    },
+    "mac": {
+      "publish": ["github"],
+      "category": "public.app.category.productivity",
+      "target": "dmg"
+    },
+    "win": {
+      "publish": ["github"],
+      "certificateFile": "private/atnos.pfx",
+      "verifyUpdateCodeSignature": false,
+      "publisherName": "ATNOS"
+    },
+    "linux": {
+      "publish": ["github"],
+      "category": "Network"
+    }
+  },
+  "devDependencies": {
+    "electron": "~1.7.10",
+    "electron-builder": "^19.54.0"
+  },
+  "dependencies": {
+    "electron-window-state": "^4.1.1"
+  }
 }
