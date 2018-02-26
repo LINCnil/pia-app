@@ -22,17 +22,17 @@ npm start
 
 ## For distribution
 
-Install electron-packager:
+Install electron-builder:
 
-`npm install -g electron-packager`
+`npm install -g electron-builder`
 
 Build with the command:
 
-For MacOs users: `npm run package-mac`
+For MacOs users: `npm run mac`
 
-For GNU/Linux users: `npm run package-linux`
+For GNU/Linux users: `npm run linux`
 
-For Windows users: `npm run package-win` (or for 32bits `npm run package-win32`)
+For Windows users: `npm run win`
 
 Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
 
