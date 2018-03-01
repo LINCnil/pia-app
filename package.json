@@ -30,6 +30,7 @@
       "category": "public.app.category.productivity"
     },
     "win": {
+      "target": "nsis",
       "publish": [
         "github"
       ],
@@ -42,6 +43,10 @@
         "github"
       ],
       "category": "Network"
+    },
+    "nsis":{
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
     }
   },
   "devDependencies": {
