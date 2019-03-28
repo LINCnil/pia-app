@@ -1,6 +1,6 @@
 {
   "name": "PIA",
-  "version": "1.6.3",
+  "version": "2.0.0",
   "description": "Version Portable Outil PIA",
   "main": "main.js",
   "scripts": {
@@ -34,7 +34,7 @@
       "publish": [
         "github"
       ],
-      "certificateFile": "private/atnos.pfx",
+      "certificateFile": "PATH/TO/YOUR/FILE.pfx",
       "verifyUpdateCodeSignature": false,
       "publisherName": "ATNOS"
     },
