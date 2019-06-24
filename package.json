@@ -34,7 +34,6 @@
       "publish": [
         "github"
       ],
-      "certificateFile": "PATH/TO/YOUR/FILE.pfx",
       "verifyUpdateCodeSignature": false,
       "publisherName": "ATNOS"
     },
@@ -51,12 +50,12 @@
     }
   },
   "devDependencies": {
-    "electron": "^1.7.10",
-    "electron-builder": "^19.56.2"
+    "electron": "^5.0.5",
+    "electron-builder": "^20.44.4"
   },
   "dependencies": {
-    "electron-log": "^2.2.14",
-    "electron-updater": "^2.19.1",
-    "electron-window-state": "^4.1.1"
+    "electron-log": "^3.0.6",
+    "electron-updater": "^4.0.6",
+    "electron-window-state": "^5.0.3"
   }
 }
