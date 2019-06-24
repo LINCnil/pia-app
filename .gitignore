@@ -3,3 +3,5 @@ dist/
 releases/
 private/
 *.log
+.DS_Store
+.idea
