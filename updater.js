@@ -1,4 +1,4 @@
-const {dialog, BrowserWindow, ipcMain} = require('electron')
+const {dialog, BrowserWindow} = require('electron')
 const {autoUpdater} = require('electron-updater')
 
 const path = require('path')
@@ -13,8 +13,6 @@ exports.check = () => {
   autoUpdater.checkForUpdates()
 
   autoUpdater.on('update-available', () => {
-
-    let downloadProgress = 0
 
     dialog.showMessageBox({
       type: 'info',
@@ -45,15 +43,6 @@ exports.check = () => {
 
       progressWin.on('closed', () => {
         progressWin = null
-      })
-
-      ipcMain.on('download-progress-request', (e) => {
-        e.returnValue = downloadProgress
-      })
-
-      autoUpdater.on('download-progress', (d) => {
-        console.log(d.percent);
-        downloadProgress = d.percent
       })
 
       autoUpdater.on('update-downloaded', () => {

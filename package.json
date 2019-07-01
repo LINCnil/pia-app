@@ -6,10 +6,10 @@
   "scripts": {
     "start": "electron .",
     "mac": "electron-builder -m",
-    "win": "electron-builder -w --x64 --ia32",
+    "win": "electron-builder -w",
     "linux": "electron-builder -l",
     "win-cert": "electron-builder create-self-signed-cert -p atnos",
-    "publish-to-github": "electron-builder build -mwl --x64 --ia32 -p onTagOrDraft"
+    "publish-to-github": "electron-builder build -mwl -p onTagOrDraft"
   },
   "author": "ATNOS",
   "repository": "https://github.com/LINCnil/pia-app",
@@ -50,12 +50,12 @@
     }
   },
   "devDependencies": {
-    "electron": "^5.0.5",
+    "electron": "^5.0.6",
     "electron-builder": "^20.44.4"
   },
   "dependencies": {
     "electron-log": "^3.0.6",
-    "electron-updater": "^4.0.6",
+    "electron-updater": "^4.0.14",
     "electron-window-state": "^5.0.3"
   }
 }

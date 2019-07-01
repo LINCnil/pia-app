@@ -1,8 +1,7 @@
 const electron = require('electron')
 // Module to control application life.
 const { app, BrowserWindow } = electron
-// IF you want to enable automatic update uncomment the line below
-// const updater = require('./updater')
+const updater = require('./updater')
 
 // Keep window state
 const windowStateKeeper = require('electron-window-state')
@@ -137,8 +136,7 @@ function createWindow() {
     require('electron').shell.openExternal(url);
   });
 
-  // IF you want to enable automatic update uncomment the line below
-  // setTimeout(updater.check, 2000);
+  setTimeout(updater.check, 2000);
 }
 
 if (!gotTheLock) {
