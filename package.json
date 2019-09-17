@@ -1,6 +1,6 @@
 {
   "name": "PIA",
-  "version": "2.1.0",
+  "version": "v2.2.0",
   "description": "Version Portable Outil PIA",
   "main": "main.js",
   "scripts": {
@@ -50,7 +50,7 @@
     }
   },
   "devDependencies": {
-    "electron": "^5.0.6",
+    "electron": "5.0.4",
     "electron-builder": "^20.44.4"
   },
   "dependencies": {
