@@ -1,15 +1,16 @@
 {
-  "name": "PIA",
-  "version": "2.2.0",
+  "name": "pia",
+  "productName": "PIA",
+  "version": "2.3.0",
   "description": "Version Portable Outil PIA",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "mac": "electron-builder -m",
-    "win": "electron-builder -w",
+    "win": "electron-builder -w --x64 --ia32",
     "linux": "electron-builder -l",
     "win-cert": "electron-builder create-self-signed-cert -p atnos",
-    "publish-to-github": "electron-builder build -mwl -p onTagOrDraft"
+    "publish-to-github": "electron-builder -p onTagOrDraft"
   },
   "author": "ATNOS",
   "repository": "https://github.com/LINCnil/pia-app",
@@ -19,6 +20,7 @@
   ],
   "build": {
     "appId": "com.atnos.pia",
+    "afterSign": "notarize.js",
     "directories": {
       "buildResources": ".",
       "output": "releases"
@@ -27,6 +29,10 @@
       "publish": [
         "github"
       ],
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "entitlements.mac.plist",
+      "entitlementsInherit": "entitlements.mac.plist",
       "category": "public.app.category.productivity"
     },
     "win": {
@@ -50,12 +56,13 @@
     }
   },
   "devDependencies": {
-    "electron": "5.0.4",
-    "electron-builder": "^21.2.0"
+    "electron": "^8.0.0",
+    "electron-builder": "^22.3.2"
   },
   "dependencies": {
-    "electron-log": "^3.0.6",
-    "electron-updater": "^4.0.14",
+    "electron-log": "^4.0.6",
+    "electron-notarize": "^0.2.1",
+    "electron-updater": "^4.2.0",
     "electron-window-state": "^5.0.3"
   }
 }
